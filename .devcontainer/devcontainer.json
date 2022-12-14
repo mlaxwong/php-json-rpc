@@ -1,0 +1,12 @@
+{
+    "name": "mlaxwong/php-json-rpc",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "workspace",
+    "extensions": [
+		"xdebug.php-debug",
+		"bmewburn.vscode-intelephense-client",
+		"mrmlnc.vscode-apache"
+	],
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose"
+}
