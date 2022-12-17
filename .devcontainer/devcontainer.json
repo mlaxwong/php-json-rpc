@@ -1,12 +1,15 @@
 {
     "name": "mlaxwong/php-json-rpc",
-    "dockerComposeFile": ["docker-compose.yml"],
-    "service": "workspace",
-    "extensions": [
-		"xdebug.php-debug",
-		"bmewburn.vscode-intelephense-client",
-		"mrmlnc.vscode-apache"
-	],
+    "image": "mlaxwong/php:8.2-vscode",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "shutdownAction": "stopCompose"
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "xdebug.php-debug",
+                "bmewburn.vscode-intelephense-client",
+                "mrmlnc.vscode-apache"
+            ]
+        }
+    }
 }

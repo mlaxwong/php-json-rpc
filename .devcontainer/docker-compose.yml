@@ -1,7 +1,0 @@
-version: '3.8'
-
-services:
-  workspace:
-    image: mlaxwong/php:8.2-vscode
-    volumes:
-      - ../:/workspace:delegated
