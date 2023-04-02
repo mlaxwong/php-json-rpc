@@ -6,6 +6,11 @@
             "Modules\\Sample\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Samples\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Mlax Wong",
