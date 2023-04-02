@@ -29,6 +29,7 @@
     "scripts": {
         "test": "php vendor/bin/phpunit",
         "cs": "php vendor/bin/phpcs",
-        "cs:fix": "php vendor/bin/phpcbf"
+        "cs:fix": "php vendor/bin/phpcbf",
+        "stan": "php -d memory_limit=-1 vendor/bin/phpstan analyse --ansi"
     }
 }
