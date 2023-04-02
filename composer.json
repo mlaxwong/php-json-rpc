@@ -1,0 +1,23 @@
+{
+    "name": "mlaxwong/php-json-rpc",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Modules\\JsonRPC\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mlax Wong",
+            "email": "mlaxwong@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.0"
+    }
+}

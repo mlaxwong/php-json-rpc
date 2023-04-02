@@ -1,1 +1,1 @@
-# php-json-rpc
+# php-module
