@@ -2,6 +2,7 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PSR12" xsi:noNamespaceSchemaLocation="../../../phpcs.xsd">
     <description>The PSR-12 coding standard.</description>
 
+    <file>contracts</file>
     <file>src</file>
     <file>tests</file>
 
