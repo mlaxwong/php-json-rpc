@@ -29,9 +29,14 @@ class Messages implements MessagesContract
         return new Request(...['version' => self::VERSION, ...compact('method', 'params', 'id')]);
     }
 
+    private function oneOrManyRequest(): Request|array
+    {
+        return count($this->requests) == 1 ? $this->requests[0] : $this->requests;
+    }
+
     public function toString(): string
     {
-        return json_encode($this->requests) ?? '';
+        return json_encode($this->oneOrManyRequest()) ?? '';
     }
 
     public function __toString(): string
@@ -46,6 +51,12 @@ class Messages implements MessagesContract
 
     public function jsonSerialize(): mixed
     {
-        return $this->requests;
+        $oneOrMany = $this->oneOrManyRequest();
+        return $oneOrMany instanceof Request ? $oneOrMany->toArray() : $oneOrMany;
+    }
+
+    public function count(): int
+    {
+        return count($this->requests);
     }
 }

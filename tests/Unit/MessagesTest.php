@@ -7,7 +7,15 @@ use PHPUnit\Framework\TestCase;
 
 class MessagesTest extends TestCase
 {
-    public function testJsonEncode()
+    public function testJsonEncodeSingleQuery()
+    {
+        $messages = new Messages();
+        $messages->query('1', 'method_name', ['param' => 'value']);
+        $expected = '{"jsonrpc":"2.0","method":"method_name","params":{"param":"value"},"id":"1"}';
+        $this->assertEquals($expected, json_encode($messages));
+    }
+
+    public function testJsonEncodeMixedNotify()
     {
         $messages = new Messages();
         $messages
