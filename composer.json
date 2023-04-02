@@ -8,7 +8,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Samples\\Tests\\": "tests/"
+            "Modules\\Sample\\Tests\\": "tests/"
         }
     },
     "authors": [
