@@ -6,6 +6,11 @@
             "Modules\\JsonRPC\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\JsonRPC\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Mlax Wong",
