@@ -10,7 +10,7 @@ use Stringable;
 /**
  * @extends IteratorAggregate<int, RequestContract>
  */
-interface MessagesContract extends JsonSerializable, Stringable, IteratorAggregate, Countable
+interface MessageContract extends JsonSerializable, Stringable, IteratorAggregate, Countable
 {
     public function query(string $id, string $method, array $params = []): self;
     public function notity(string $method, array $params = []): self;

@@ -4,5 +4,5 @@ namespace Contracts\JsonRPC;
 
 interface ServerContract
 {
-    public function reply(MessagesContract $messages);
+    public function reply(MessageContract $message);
 }

@@ -3,22 +3,22 @@
 namespace Modules\JsonRPC;
 
 use ArrayIterator;
-use Contracts\JsonRPC\MessagesContract;
+use Contracts\JsonRPC\MessageContract;
 use Traversable;
 
-class Messages implements MessagesContract
+class Message implements MessageContract
 {
     public const VERSION = '2.0';
 
     private array $requests = [];
 
-    public function query(string $id, string $method, array $params = []): MessagesContract
+    public function query(string $id, string $method, array $params = []): MessageContract
     {
         $this->requests[] = $this->buildRequest($method, $params, $id);
         return $this;
     }
 
-    public function notity(string $method, array $params = []): MessagesContract
+    public function notity(string $method, array $params = []): MessageContract
     {
         $this->requests[] = $this->buildRequest($method, $params);
         return $this;
@@ -58,5 +58,18 @@ class Messages implements MessagesContract
     public function count(): int
     {
         return count($this->requests);
+    }
+
+    public static function decode(string $json): MessageContract|false
+    {
+        if (!is_json($json)) {
+            return false;
+        }
+        $message = new Message();
+        $data = json_decode($json, true);
+        foreach (to_list($data) as $input) {
+            $validKeys = [['jsonprc', 'method', 'params', 'id'], ['jsonprc', 'method', 'params']];
+        }
+        return $message;
     }
 }

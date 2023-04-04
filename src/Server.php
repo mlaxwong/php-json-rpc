@@ -3,7 +3,7 @@
 namespace Modules\JsonRPC;
 
 use Contracts\JsonRPC\EvaluatorContract;
-use Contracts\JsonRPC\MessagesContract;
+use Contracts\JsonRPC\MessageContract;
 use Contracts\JsonRPC\ServerContract;
 
 class Server implements ServerContract
@@ -13,13 +13,13 @@ class Server implements ServerContract
     ) {  
     }
     
-    public function reply(MessagesContract $messages)
+    public function reply(MessageContract $message)
     {
     }
 
-    private function processMessages(MessagesContract $messages)
+    private function processMessage(MessageContract $message)
     {
-        foreach ($messages as $request) {
+        foreach ($message as $request) {
         }
     }
 }
