@@ -13,8 +13,9 @@ class Server implements ServerContract
     ) {
     }
 
-    public function reply(MessageContract $message)
+    public function reply(MessageContract|string $message)
     {
+        $message = is_string($message) ? Message::decode($message) : $message;
     }
 
     private function processMessage(MessageContract $message)
