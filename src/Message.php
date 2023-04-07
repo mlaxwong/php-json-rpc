@@ -4,6 +4,7 @@ namespace Modules\JsonRPC;
 
 use ArrayIterator;
 use Contracts\JsonRPC\MessageContract;
+use Contracts\JsonRPC\RequestContract;
 use Contracts\JsonRPC\ServerContract;
 use Traversable;
 
@@ -51,7 +52,7 @@ class Message implements MessageContract
     public function jsonSerialize(): mixed
     {
         $oneOrMany = $this->oneOrManyRequest();
-        return $oneOrMany instanceof Request ? $oneOrMany->toArray() : $oneOrMany;
+        return $oneOrMany instanceof RequestContract ? $oneOrMany->toArray() : $oneOrMany;
     }
 
     public function count(): int
