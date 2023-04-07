@@ -17,4 +17,16 @@ class ResultResponse extends Response implements ResultResponseContract
     {
         return $this->result;
     }
+
+    public function toArray(): array
+    {
+        $jsonrpc = $this->version();
+        $result = $this->result();
+        $id = $this->id();
+        $keys = ['jsonrpc', 'result'];
+        if ($id) {
+            $keys[] = 'id';
+        }
+        return compact(...$keys);
+    }
 }

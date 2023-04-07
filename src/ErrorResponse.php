@@ -29,4 +29,21 @@ class ErrorResponse extends Response implements ErrorResponseContract
     {
         return $this->data;
     }
+
+    public function toArray(): array
+    {
+        $jsonrpc = $this->version();
+        $code = $this->code();
+        $message = $this->message();
+        $data = $this->data();
+        $id = $this->id();
+        $keys = ['jsonrpc', 'code', 'message'];
+        if ($data) {
+            $keys[] = 'data';
+        }
+        if ($id) {
+            $keys[] = 'id';
+        }
+        return compact(...$keys);
+    }
 }
