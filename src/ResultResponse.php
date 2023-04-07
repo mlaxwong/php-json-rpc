@@ -29,4 +29,17 @@ class ResultResponse extends Response implements ResultResponseContract
         }
         return compact(...$keys);
     }
+
+    public static function decode(string $json): ResultResponseContract|false
+    {
+        if (!is_json($json)) {
+            return false;
+        }
+        $data = json_decode($json, true);
+        if (!validate_array_keys($data, ['jsonrpc', 'result', '?id'])) {
+            return false;
+        }
+        unset($input['jsonrpc']);
+        return new self(...$data);
+    }
 }

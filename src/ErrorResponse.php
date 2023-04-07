@@ -46,4 +46,17 @@ class ErrorResponse extends Response implements ErrorResponseContract
         }
         return compact(...$keys);
     }
+
+    public static function decode(string $json): ErrorResponseContract|false
+    {
+        if (!is_json($json)) {
+            return false;
+        }
+        $data = json_decode($json, true);
+        if (!validate_array_keys($data, ['jsonrpc', 'code', 'message', '?data', '?id'])) {
+            return false;
+        }
+        unset($input['jsonrpc']);
+        return new self(...$data);
+    }
 }
