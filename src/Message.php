@@ -68,7 +68,11 @@ class Message implements MessageContract
         $message = new Message();
         $data = json_decode($json, true);
         foreach (to_list($data) as $input) {
-            $validKeys = [['jsonprc', 'method', 'params', 'id'], ['jsonprc', 'method', 'params']];
+            if (!validate_array_keys($input, ['jsonrpc', 'method', 'params', '?id'])) {
+                return false;
+            }
+            unset($input['jsonrpc']);
+            isset($input['id']) ? $message->query(...$input) : $message->notity(...$input);
         }
         return $message;
     }

@@ -27,6 +27,13 @@ class MessageTest extends TestCase
 
     public function testJsonDecode()
     {
-        $this->assertTrue(is_json('{"id": "12345"}'));
+        // empty json
+        $this->assertFalse(Message::decode('{}'));
+
+        // none related keys
+        $this->assertFalse(Message::decode('{"a": 1, "b": 1}'));
+
+        $this->assertInstanceOf(Message::class, Message::decode('[{"jsonrpc":"2.0","method":"method_name","params":{"param":"value"},"id":"1"},{"jsonrpc":"2.0","method":"notify_method","params":{"message":"hello"}}]'));
+        $this->assertInstanceOf(Message::class, Message::decode('{"jsonrpc":"2.0","method":"method_name","params":{"param":"value"},"id":"1"}'));
     }
 }

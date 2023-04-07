@@ -10,9 +10,9 @@ class Server implements ServerContract
 {
     public function __construct(
         private EvaluatorContract $evaluator
-    ) {  
+    ) {
     }
-    
+
     public function reply(MessageContract $message)
     {
     }

@@ -9,7 +9,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Sample\\Tests\\": "tests/"
+            "Modules\\JsonRPC\\Tests\\": "tests/"
         }
     },
     "authors": [
