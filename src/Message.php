@@ -4,12 +4,11 @@ namespace Modules\JsonRPC;
 
 use ArrayIterator;
 use Contracts\JsonRPC\MessageContract;
+use Contracts\JsonRPC\ServerContract;
 use Traversable;
 
 class Message implements MessageContract
 {
-    public const VERSION = '2.0';
-
     private array $requests = [];
 
     public function query(string $id, string $method, array $params = []): MessageContract
@@ -26,7 +25,7 @@ class Message implements MessageContract
 
     private function buildRequest(string $method, array $params = [], ?string $id = null): Request
     {
-        return new Request(...['version' => self::VERSION, ...compact('method', 'params', 'id')]);
+        return new Request(...['version' => ServerContract::VERSION, ...compact('method', 'params', 'id')]);
     }
 
     private function oneOrManyRequest(): Request|array

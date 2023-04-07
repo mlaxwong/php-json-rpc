@@ -15,12 +15,18 @@ class Server implements ServerContract
 
     public function reply(MessageContract|string $message)
     {
-        $message = is_string($message) ? Message::decode($message) : $message;
+        return $this->processMessage(is_string($message) ? Message::decode($message) : $message);
     }
 
     private function processMessage(MessageContract $message)
     {
+        $responses = [];
         foreach ($message as $request) {
+            $response = $this->evaluator->evaluate($request->method(), $request->params());
+            if (!$request->isNotify()) {
+                $responses[] = $response;
+            }
         }
+        return $responses;
     }
 }

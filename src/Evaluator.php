@@ -6,7 +6,7 @@ use Contracts\JsonRPC\EvaluatorContract;
 
 class Evaluator implements EvaluatorContract
 {
-    public function evaluate()
+    public function evaluate(string $method, array $params = [])
     {
     }
 }
