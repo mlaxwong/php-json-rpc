@@ -3,6 +3,7 @@
 namespace Modules\JsonRPC;
 
 use Contracts\JsonRPC\ErrorResponseContract;
+use Modules\Framework\Helpers\Arr;
 
 class ErrorResponse extends Response implements ErrorResponseContract
 {
@@ -53,7 +54,7 @@ class ErrorResponse extends Response implements ErrorResponseContract
             return false;
         }
         $data = json_decode($json, true);
-        if (!validate_array_keys($data, ['jsonrpc', 'code', 'message', '?data', '?id'])) {
+        if (!Arr::validateKeys($data, ['jsonrpc', 'code', 'message', '?data', '?id'])) {
             return false;
         }
         unset($input['jsonrpc']);

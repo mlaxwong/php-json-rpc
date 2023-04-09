@@ -6,6 +6,8 @@ use ArrayIterator;
 use Contracts\JsonRPC\MessageContract;
 use Contracts\JsonRPC\RequestContract;
 use Contracts\JsonRPC\ServerContract;
+use Modules\Framework\Helpers\Arr;
+use Modules\Framework\Helpers\Json;
 use Traversable;
 
 class Message implements MessageContract
@@ -62,13 +64,13 @@ class Message implements MessageContract
 
     public static function decode(string $json): MessageContract|false
     {
-        if (!is_json($json)) {
+        if (!Json::isJson($json)) {
             return false;
         }
         $message = new Message();
         $data = json_decode($json, true);
-        foreach (to_list($data) as $input) {
-            if (!validate_array_keys($input, ['jsonrpc', 'method', 'params', '?id'])) {
+        foreach (Arr::toList($data) as $input) {
+            if (!Arr::validateKeys($input, ['jsonrpc', 'method', 'params', '?id'])) {
                 return false;
             }
             unset($input['jsonrpc']);

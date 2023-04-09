@@ -3,6 +3,7 @@
 namespace Modules\JsonRPC;
 
 use Contracts\JsonRPC\ResultResponseContract;
+use Modules\Framework\Helpers\Arr;
 
 class ResultResponse extends Response implements ResultResponseContract
 {
@@ -36,7 +37,7 @@ class ResultResponse extends Response implements ResultResponseContract
             return false;
         }
         $data = json_decode($json, true);
-        if (!validate_array_keys($data, ['jsonrpc', 'result', '?id'])) {
+        if (!Arr::validateKeys($data, ['jsonrpc', 'result', '?id'])) {
             return false;
         }
         unset($input['jsonrpc']);

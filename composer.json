@@ -19,7 +19,8 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "mlaxwong/php-framework": "dev-main"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.7",
@@ -31,5 +32,11 @@
         "cs": "php vendor/bin/phpcs",
         "cs:fix": "php vendor/bin/phpcbf",
         "stan": "php -d memory_limit=-1 vendor/bin/phpstan analyse --ansi"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mlaxwong/php-framework.git"
+        }
+    ]
 }

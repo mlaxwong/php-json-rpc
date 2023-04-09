@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1195a3075ea2d2a222ab4f08439d53dc",
-    "packages": [],
+    "content-hash": "6cb6dae206b2964d0f7c5838a647c38d",
+    "packages": [
+        {
+            "name": "mlaxwong/php-framework",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:mlaxwong/php-framework.git",
+                "reference": "374ba35b1e38e92edbe730fb7cd8e30d43151f8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mlaxwong/php-framework/zipball/374ba35b1e38e92edbe730fb7cd8e30d43151f8f",
+                "reference": "374ba35b1e38e92edbe730fb7cd8e30d43151f8f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.0",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Contracts\\Framework\\": "contracts/",
+                    "Modules\\Framework\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Modules\\Framework\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "php vendor/bin/phpunit"
+                ],
+                "cs": [
+                    "php vendor/bin/phpcs"
+                ],
+                "cs:fix": [
+                    "php vendor/bin/phpcbf"
+                ],
+                "stan": [
+                    "php -d memory_limit=-1 vendor/bin/phpstan analyse --ansi"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Mlax Wong",
+                    "email": "mlaxwong@gmail.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/mlaxwong/php-framework/tree/main",
+                "issues": "https://github.com/mlaxwong/php-framework/issues"
+            },
+            "time": "2023-04-09T07:10:58+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",
@@ -1733,7 +1795,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mlaxwong/php-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
