@@ -4,6 +4,7 @@ namespace Modules\JsonRPC;
 
 use Contracts\JsonRPC\ErrorResponseContract;
 use Modules\Framework\Helpers\Arr;
+use Modules\Framework\Helpers\Json;
 
 class ErrorResponse extends Response implements ErrorResponseContract
 {
@@ -50,7 +51,7 @@ class ErrorResponse extends Response implements ErrorResponseContract
 
     public static function decode(string $json): ErrorResponseContract|false
     {
-        if (!is_json($json)) {
+        if (!Json::isJson($json)) {
             return false;
         }
         $data = json_decode($json, true);

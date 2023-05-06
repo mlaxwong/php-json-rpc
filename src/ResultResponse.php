@@ -4,6 +4,7 @@ namespace Modules\JsonRPC;
 
 use Contracts\JsonRPC\ResultResponseContract;
 use Modules\Framework\Helpers\Arr;
+use Modules\Framework\Helpers\Json;
 
 class ResultResponse extends Response implements ResultResponseContract
 {
@@ -33,7 +34,7 @@ class ResultResponse extends Response implements ResultResponseContract
 
     public static function decode(string $json): ResultResponseContract|false
     {
-        if (!is_json($json)) {
+        if (!Json::isJson($json)) {
             return false;
         }
         $data = json_decode($json, true);
