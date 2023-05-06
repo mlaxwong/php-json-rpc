@@ -71,6 +71,7 @@ class Message implements MessageContract
         $data = json_decode($json, true);
         foreach (Arr::toList($data) as $input) {
             if (!Arr::validateKeys($input, ['jsonrpc', 'method', 'params', '?id'])) {
+                info("Invalid JsonRPC request `$json`");
                 return false;
             }
             unset($input['jsonrpc']);
